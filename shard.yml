@@ -1,0 +1,26 @@
+name: crystal-realworld-example-app
+version: 0.1.0
+
+authors:
+  - adamcreekroad <adam@adam-george.com>
+
+targets:
+  crystal-realworld-example-app:
+    main: src/crystal-realworld-example-app.cr
+
+dependencies:
+  active_record:
+    github: waterlink/active_record.cr
+  db:
+    github: crystal-lang/crystal-db
+  jwt:
+    github: greyblake/crystal-jwt
+  kemal:
+    github: kemalcr/kemal
+    branch: master
+  mysql_adapter:
+    github: waterlink/mysql_adapter.cr
+
+crystal: 0.22.0
+
+license: MIT

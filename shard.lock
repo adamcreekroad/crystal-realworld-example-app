@@ -1,0 +1,42 @@
+version: 1.0
+shards:
+  active_record:
+    github: waterlink/active_record.cr
+    version: 1.0.5
+
+  db:
+    github: crystal-lang/crystal-db
+    version: 0.4.2
+
+  jwt:
+    github: greyblake/crystal-jwt
+    version: 0.2.2
+
+  kemal:
+    github: kemalcr/kemal
+    commit: 66612eeb04fd59b6cb26919f38859d0440f68153
+
+  kilt:
+    github: jeromegn/kilt
+    version: 0.3.3
+
+  mysql:
+    github: waterlink/crystal-mysql
+    version: 0.4.4
+
+  mysql_adapter:
+    github: waterlink/mysql_adapter.cr
+    version: 0.5.1
+
+  pool:
+    github: ysbaddaden/pool
+    version: 0.2.3
+
+  query:
+    github: waterlink/query.cr
+    version: 0.2.5
+
+  radix:
+    github: luislavena/radix
+    version: 0.3.8
+

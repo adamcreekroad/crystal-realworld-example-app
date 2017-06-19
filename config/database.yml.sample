@@ -1,0 +1,7 @@
+development:
+  host:     "localhost"
+  username: "root"
+  password:
+  database: "crystal_realworld_example_app_dev"
+  port:     3306
+  socket:
