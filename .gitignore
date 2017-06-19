@@ -1,7 +1,7 @@
-/doc/
-/lib/
-/bin/
 /.shards/
-
+/bin/
+/build/
 /config/application.yml
 /config/database.yml
+/doc/
+/lib/

@@ -1,7 +1,7 @@
 require "yaml"
 require "mysql"
 
-db_config = YAML.parse(File.read("../config/database.yml"))["development"]
+db_config = YAML.parse(File.read("config/database.yml"))["development"]
 
 connection = MySQL.connect(
   db_config["host"].as_s,

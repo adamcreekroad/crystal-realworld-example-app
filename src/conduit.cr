@@ -7,11 +7,11 @@ require "active_record"
 require "mysql_adapter"
 require "./crystal-realworld-example-app/*"
 
-app_config = YAML.parse(File.read("/home/adam/development/crystal-realworld-example-app/config/application.yml"))["development"]
+app_config = YAML.parse(File.read("config/application.yml"))["development"]
 ENV["SECRET_KEY_BASE"] = app_config["secret_key_base"].as_s
 
 # DB Config
-db_config = YAML.parse(File.read("/home/adam/development/crystal-realworld-example-app/config/database.yml"))["development"]
+db_config = YAML.parse(File.read("config/database.yml"))["development"]
 ENV["MYSQL_HOST"]     = db_config["host"].as_s
 ENV["MYSQL_USER"]     = db_config["username"].as_s
 ENV["MYSQL_PASSWORD"] = db_config["password"].as_s
@@ -29,7 +29,7 @@ module Conduit
       user = find_user_from_email(user_params["email"].as_s)
 
       if user && authorized?(user, user_params["password"].as_s)
-        user.as_json.to_json
+        { user: user.as_json }.to_json
       else
         {
           errors: {
@@ -39,7 +39,18 @@ module Conduit
       end
     end
 
+    options "/api/users" do |env|
+      env.response.headers["Access-Control-Allow-Origin"] = "*"
+      env.response.headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS"
+      env.response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization, X-Requested-With"
+
+      ""
+    end
+
     post "/api/users" do |env|
+      env.response.headers["Access-Control-Allow-Origin"] = "*"
+      env.response.headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS"
+      env.response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization, X-Requested-With"
       env.response.content_type = "application/json"
 
       # Ugly but for now works
@@ -54,7 +65,7 @@ module Conduit
 
       user.create
 
-      user.as_json.to_json
+      { user: user.as_json }.to_json
     end
 
     get "/api/user" do |env|
@@ -62,7 +73,7 @@ module Conduit
 
       user = find_user_from_token(env.request.headers["Authorization"].split("Token ").last)
 
-      user.as_json.to_json if user.is_a?(User)
+      { user: user.as_json }.to_json if user.is_a?(User)
     end
 
     def self.authorized?(user : User, password : String)
