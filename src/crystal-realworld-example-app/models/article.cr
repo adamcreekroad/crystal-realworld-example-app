@@ -26,16 +26,16 @@ class Article < ActiveRecord::Model
 
   def as_json
     {
-      slug:        slug,
-      title:       title,
-      description: description,
-      body:        body,
-      tagList:     [] of String,
-      createdAt:   created_at,
-      updatedAt:   updated_at,
-      favorited:   favorited?,
-      favoritesCount: favorites.size,
-      author: {} of String => String
+      "slug"           => slug,
+      "title"          => title,
+      "description"    => description,
+      "body"           => body,
+      "tagList"        => [] of String,
+      "createdAt"      => created_at,
+      "updatedAt"      => updated_at,
+      "favorited"      => favorited?,
+      "favoritesCount" => favorites.size,
+      "author"         => {} of String => String
     }
   end
 

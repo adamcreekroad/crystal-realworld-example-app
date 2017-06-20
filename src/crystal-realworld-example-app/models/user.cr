@@ -22,11 +22,11 @@ class User < ActiveRecord::Model
 
   def as_json
     {
-      email: email,
-      token: token,
-      username: username,
-      bio: bio,
-      image: image
+      "email" => email,
+      "token" => token,
+      "username" => username,
+      "bio" => bio,
+      "image" => image
     }
   end
 

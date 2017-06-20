@@ -21,7 +21,7 @@ Conduit.application.route do
   # delete "/api/profiles/:username/follow", to: "api/profiles#destroy"
 
   # Profile routes
-  # get    "/api/profiles/:username",        to: "api/profiles#show"
+  get    "/api/profiles/:username",        to: "api/profiles#show"
 
   # Session routes
   post "/api/users/login", to: "api/sessions#create"
