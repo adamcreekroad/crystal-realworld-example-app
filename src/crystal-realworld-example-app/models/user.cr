@@ -1,7 +1,7 @@
 class User < ActiveRecord::Model
   adapter mysql
 
-  primary id     : Int
+  primary id : Int
 
   field email              : String
   field encrypted_password : String
@@ -11,6 +11,14 @@ class User < ActiveRecord::Model
   field image              : String
   field created_at         : Time
   field updated_at         : Time
+
+  def articles
+    Article.where({ "user_id" => id })
+  end
+
+  def favorites
+    Favorite.where({ "user_id" => id })
+  end
 
   def as_json
     {
