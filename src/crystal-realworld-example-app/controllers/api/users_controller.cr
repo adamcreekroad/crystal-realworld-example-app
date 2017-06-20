@@ -29,6 +29,7 @@ module Api
         user.password = user_params["password"].as_s if user_params["password"]?
         user.image    = user_params["image"].as_s if user_params["image"]?
         user.bio      = user_params["bio"].as_s if user_params["bio"]?
+        user.updated_at = Time.now
 
         user.update
 
